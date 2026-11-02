@@ -7,7 +7,9 @@ F1.com | https://www.formula1.com/en/latest/all.xml
 Motorsport.com F1 | https://www.motorsport.com/rss/f1/news/
 Autosport F1 | https://www.autosport.com/rss/f1/news/
 Motorsport Week | https://www.motorsportweek.com/feed/
-
+The Race F1 | https://the-race.com/category/formula-1/feed/
+The Race MotoGP | https://www.the-race.com/category/motogp/rss/
+Motorsport.com MotoGP | https://www.motorsport.com/rss/motogp/news/
 # Ideas you can enable by removing the leading #  (other series / channels):
 # MotoGP YouTube | youtube:@motogp
 # WEC YouTube | youtube:@FIAWEC
