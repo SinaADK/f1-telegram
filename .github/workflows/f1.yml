@@ -1,0 +1,42 @@
+name: F1 to Telegram
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"   # makes sure a watcher is always (re)started
+  workflow_dispatch:          # lets you press a "Run workflow" button manually
+
+permissions:
+  contents: write
+
+# Only one watcher at a time. A new one waits in line and starts the moment
+# the previous one finishes, so there is practically no gap.
+concurrency:
+  group: f1-telegram
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Watch feeds and post new items to Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          LOOP_MINUTES: "340"   # keep watching for ~5h40m, then the next watcher takes over
+          POLL_SECONDS: "60"    # check every 60 seconds
+        run: python bot.py
+
+      - name: Save memory of what was already posted
+        if: always()
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add seen.json || true
+          git diff --staged --quiet || (git commit -m "update seen list" && git pull --rebase -q && git push)
