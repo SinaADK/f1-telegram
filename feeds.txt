@@ -1,0 +1,14 @@
+# One source per line:   Name shown in Telegram | feed address
+# Lines starting with # are ignored. Delete or add lines freely.
+# For a YouTube channel you can just write youtube:@channelhandle
+
+F1 YouTube | youtube:@formula1
+F1.com | https://www.formula1.com/en/latest/all.xml
+Motorsport.com F1 | https://www.motorsport.com/rss/f1/news/
+Autosport F1 | https://www.autosport.com/rss/f1/news/
+Motorsport Week | https://www.motorsportweek.com/feed/
+
+# Ideas you can enable by removing the leading #  (other series / channels):
+# MotoGP YouTube | youtube:@motogp
+# WEC YouTube | youtube:@FIAWEC
+# Autosport all series | https://www.autosport.com/rss/feed/all
